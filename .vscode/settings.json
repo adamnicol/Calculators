@@ -1,0 +1,18 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/build": true,
+    "**/bin": true,
+    "**/obj": true,
+    "**/Shared": true,
+    "**/Logs": true,
+    "**/.vs": true,
+    "**/*.sln": true,
+    "**/*.csproj*": true,
+    "**/*.ruleset": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.renderFinalNewline": "off"
+}

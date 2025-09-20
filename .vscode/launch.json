@@ -1,0 +1,36 @@
+{
+  "configurations": [
+    {
+      "name": "Server",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "cwd": "${workspaceRoot}/server",
+      "program": "${workspaceFolder}/server/Calculators/bin/debug/net9.0/Calculators.dll",
+      "args": [],
+      "stopAtEntry": false
+    },
+    {
+      "name": "Client",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}/client/",
+      "runtimeExecutable": "npm",
+      "args": ["run", "dev"]
+    },
+    {
+      "name": "Browser",
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "url": "http://localhost:5173"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Application",
+      "configurations": ["Server", "Client", "Browser"],
+      "stopAll": true
+    }
+  ]
+}
