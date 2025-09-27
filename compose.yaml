@@ -1,13 +1,38 @@
 services:
+  server:
+    container_name: "server"
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      target: dev
+    env_file: ./server/.env
+    ports:
+      - "5181:5181"
+    volumes:
+      - ./server:/app
+    entrypoint:
+      [
+        "dotnet",
+        "watch",
+        "run",
+        "--project",
+        "Calculators/Calculators.csproj",
+        "--no-build",
+        "--urls",
+        "http://0.0.0.0:5181",
+      ]
+    restart: unless-stopped
+
   client:
+    container_name: "client"
     build:
       context: ./client
       dockerfile: Dockerfile
       target: dev
-    container_name: "client"
     env_file: ./client/.env
     ports:
-      - "5173:5173"
+      - "5173:5173" # Application
+      - "9229:9229" # Debugger
     volumes:
       - ./client:/app
       - /app/node_modules
